@@ -1,0 +1,709 @@
+{
+  "version": "washo-takayama-1.0",
+  "description": "洋書版と同じ18概念群・43検索枠を日本語の国内書誌向けに再構成した独立の編集分類。",
+  "publication_start": "2026-06",
+  "publication_end": "2028-12",
+  "searches_per_day": 6,
+  "results_per_query": 12,
+  "max_new_per_run": 16,
+  "max_new_per_publisher": 2,
+  "min_score": 45,
+  "families": [
+    {
+      "label": "マニエリスム・変身",
+      "category": "美術史・幻想",
+      "core": [
+        "マニエリスム",
+        "アルチンボルド",
+        "変身",
+        "変容",
+        "メタモルフォーゼ",
+        "奇想画",
+        "カプリッチョ"
+      ],
+      "bridge": [
+        "ルネサンス",
+        "バロック",
+        "歪曲",
+        "人工自然",
+        "怪奇",
+        "装飾",
+        "異形"
+      ],
+      "english_core": [
+        "mannerism",
+        "mannerist",
+        "maniera",
+        "arcimboldo",
+        "metamorphosis",
+        "metamorphic",
+        "capriccio"
+      ]
+    },
+    {
+      "label": "驚異の部屋・蒐集の装置",
+      "category": "博物誌・蒐集",
+      "core": [
+        "驚異の部屋",
+        "ヴンダーカンマー",
+        "クンストカンマー",
+        "珍品陳列室",
+        "博物蒐集"
+      ],
+      "bridge": [
+        "蒐集",
+        "収集",
+        "展示",
+        "博物館",
+        "標本",
+        "好奇心",
+        "百科"
+      ],
+      "english_core": [
+        "cabinet of curiosities",
+        "wunderkammer",
+        "kunstkammer",
+        "kunstschrank",
+        "chamber of wonders",
+        "curiosity cabinet",
+        "curiosity cabinets"
+      ]
+    },
+    {
+      "label": "博物誌・珍獣・怪物",
+      "category": "博物誌・蒐集",
+      "core": [
+        "博物誌",
+        "怪物図像",
+        "ベスティアリ",
+        "動物寓意譚",
+        "奇獣",
+        "畸形",
+        "怪物誌"
+      ],
+      "bridge": [
+        "動物",
+        "植物",
+        "図譜",
+        "自然史",
+        "標本",
+        "幻獣",
+        "分類"
+      ],
+      "english_core": [
+        "bestiary",
+        "teratology",
+        "monstrous births",
+        "natural history illustration",
+        "monsters of nature",
+        "natural history collections",
+        "taxidermy"
+      ]
+    },
+    {
+      "label": "光学・錯視・幻灯",
+      "category": "美術史・幻想",
+      "core": [
+        "アナモルフォーズ",
+        "暗箱",
+        "カメラ・オブスクラ",
+        "幻灯",
+        "錯視",
+        "光学玩具",
+        "遠近法"
+      ],
+      "bridge": [
+        "視覚",
+        "光学",
+        "投影",
+        "映像装置",
+        "視覚文化",
+        "イリュージョン"
+      ],
+      "english_core": [
+        "anamorphosis",
+        "anamorphic",
+        "camera obscura",
+        "magic lantern",
+        "phantasmagoria",
+        "peep show",
+        "peep-show"
+      ]
+    },
+    {
+      "label": "ピクチャレスク・廃墟・庭園",
+      "category": "美術史・幻想",
+      "core": [
+        "ピクチャレスク",
+        "廃墟美学",
+        "ピラネージ",
+        "ボマルツォ",
+        "怪物庭園",
+        "庭園史"
+      ],
+      "bridge": [
+        "風景画",
+        "廃墟",
+        "迷宮",
+        "庭園",
+        "景観",
+        "ロマン主義"
+      ],
+      "english_core": [
+        "picturesque",
+        "bomarzo",
+        "ruin aesthetics",
+        "ruinous landscapes",
+        "grottos",
+        "grottoes",
+        "garden follies"
+      ]
+    },
+    {
+      "label": "記憶術・百科・結合術",
+      "category": "図像・古版本",
+      "core": [
+        "記憶術",
+        "結合術",
+        "記憶の宮殿",
+        "アタナシウス・キルヒャー",
+        "キルヒャー",
+        "百科全書"
+      ],
+      "bridge": [
+        "ルネサンス",
+        "分類",
+        "知識",
+        "アルス・コンビナトリア",
+        "博学"
+      ],
+      "english_core": [
+        "ars combinatoria",
+        "combinatorial art",
+        "art of memory",
+        "memory palace",
+        "memory theater",
+        "memory theatre",
+        "ramon llull"
+      ]
+    },
+    {
+      "label": "エンブレム・寓意・図像学",
+      "category": "図像・古版本",
+      "core": [
+        "エンブレム",
+        "エンブレム・ブック",
+        "図像学",
+        "ヒエログリフ",
+        "寓意画",
+        "象徴図像"
+      ],
+      "bridge": [
+        "図像",
+        "寓意",
+        "象徴",
+        "紋章",
+        "図解",
+        "初期近代"
+      ],
+      "english_core": [
+        "emblem book",
+        "emblem books",
+        "emblemata",
+        "hieroglyphics",
+        "rebus",
+        "iconologia",
+        "iconology"
+      ]
+    },
+    {
+      "label": "観相・解剖・蝋の身体",
+      "category": "人体・蝋・解剖",
+      "core": [
+        "観相学",
+        "人相学",
+        "骨相学",
+        "蝋解剖",
+        "セロプラスティック",
+        "蝋人形",
+        "解剖模型"
+      ],
+      "bridge": [
+        "人体",
+        "医史学",
+        "標本",
+        "身体表象",
+        "医学史",
+        "解剖図"
+      ],
+      "english_core": [
+        "physiognomy",
+        "physiognomics",
+        "phrenology",
+        "ceroplastics",
+        "ceroplasty",
+        "wax anatomy",
+        "anatomical wax"
+      ]
+    },
+    {
+      "label": "錬金術・魔術・秘教",
+      "category": "魔術・神秘",
+      "core": [
+        "錬金術",
+        "ヘルメス主義",
+        "秘教",
+        "魔術史",
+        "魔術図像",
+        "占術",
+        "占星術"
+      ],
+      "bridge": [
+        "神秘思想",
+        "タロット",
+        "宗教史",
+        "ルネサンス",
+        "儀礼",
+        "象徴"
+      ],
+      "english_core": [
+        "alchemy",
+        "alchemical",
+        "hermeticism",
+        "hermetism",
+        "hermetic philosophy",
+        "occult sciences",
+        "divination"
+      ]
+    },
+    {
+      "label": "書物・版画・メディア考古学",
+      "category": "図像・古版本",
+      "core": [
+        "古版本",
+        "彩色版画",
+        "木版画",
+        "石版画",
+        "クロモリトグラフ",
+        "挿絵本",
+        "印刷文化"
+      ],
+      "bridge": [
+        "出版史",
+        "書物史",
+        "図版",
+        "版画",
+        "写本",
+        "印刷術"
+      ],
+      "english_core": [
+        "illustrated books",
+        "illustrated manuscripts",
+        "illuminated manuscripts",
+        "woodcut illustration",
+        "woodcuts",
+        "print culture",
+        "visual print culture"
+      ]
+    },
+    {
+      "label": "奇想建築・迷宮・ピラネージ",
+      "category": "美術史・幻想",
+      "core": [
+        "ピラネージ",
+        "奇想建築",
+        "建築幻想",
+        "迷宮建築",
+        "トロンプ・ルイユ",
+        "だまし絵"
+      ],
+      "bridge": [
+        "建築史",
+        "装飾",
+        "廃墟",
+        "空想都市",
+        "図面",
+        "空間"
+      ],
+      "english_core": [
+        "piranesi",
+        "carceri",
+        "imaginary prisons",
+        "architectural capriccio",
+        "architectural fantasies",
+        "labyrinthine architecture",
+        "labyrinths"
+      ]
+    },
+    {
+      "label": "見世物・自動機械・人造生命",
+      "category": "美術史・幻想",
+      "core": [
+        "自動人形",
+        "オートマタ",
+        "自動機械",
+        "機械仕掛け",
+        "影絵劇",
+        "見世物史",
+        "人造生命"
+      ],
+      "bridge": [
+        "見世物",
+        "演劇",
+        "機械",
+        "人形",
+        "からくり",
+        "スペクタクル"
+      ],
+      "english_core": [
+        "automata",
+        "automaton",
+        "mechanical theatre",
+        "mechanical theater",
+        "clockwork figures",
+        "mechanical marvels",
+        "artificial life"
+      ]
+    },
+    {
+      "label": "グロテスク・奇怪・幻想",
+      "category": "美術史・幻想",
+      "core": [
+        "グロテスク",
+        "グロテスキ",
+        "怪奇美術",
+        "心霊写真",
+        "幻想画",
+        "シュルレアリスム"
+      ],
+      "bridge": [
+        "奇怪",
+        "異形",
+        "不気味",
+        "怪物",
+        "幻想",
+        "怪異"
+      ],
+      "english_core": [
+        "grotesquerie",
+        "grotesques",
+        "grotesque art",
+        "uncanny imagery",
+        "monster imagery",
+        "fantastic art",
+        "fantastical art"
+      ]
+    },
+    {
+      "label": "色彩・共感覚・視覚的快楽",
+      "category": "美術史・幻想",
+      "core": [
+        "色彩論",
+        "色彩学",
+        "共感覚",
+        "色彩文化",
+        "クロマティクス"
+      ],
+      "bridge": [
+        "光学",
+        "視覚",
+        "感覚史",
+        "色彩",
+        "美術理論"
+      ],
+      "english_core": [
+        "colour theory",
+        "color theory",
+        "chromatics",
+        "chromatic worlds",
+        "chromophobia",
+        "chromophilia",
+        "chromolithography"
+      ]
+    },
+    {
+      "label": "百科展示・視覚科学",
+      "category": "図像・古版本",
+      "core": [
+        "科学図像",
+        "科学図譜",
+        "天体写真",
+        "図解の歴史",
+        "視覚科学",
+        "天文学図譜"
+      ],
+      "bridge": [
+        "可視化",
+        "図表",
+        "天文学",
+        "科学機器",
+        "図鑑",
+        "知識"
+      ],
+      "english_core": [
+        "scientific illustration",
+        "scientific instruments",
+        "scientific visualization",
+        "visualising knowledge",
+        "visualizing knowledge",
+        "scientific diagrams",
+        "visual epistemology"
+      ]
+    },
+    {
+      "label": "文学の迷宮・ナンセンス",
+      "category": "美術史・幻想",
+      "core": [
+        "ナンセンス文学",
+        "不条理文学",
+        "幻想文学史",
+        "文学の迷宮"
+      ],
+      "bridge": [
+        "パラドックス",
+        "遊戯",
+        "言語",
+        "挿絵",
+        "視覚文学"
+      ],
+      "english_core": [
+        "literary nonsense",
+        "nonsense literature",
+        "paradoxography",
+        "fantastic literature",
+        "pictorial narrative",
+        "literary labyrinth",
+        "word and image"
+      ]
+    },
+    {
+      "label": "音楽図像・楽器の奇想",
+      "category": "音楽・文化",
+      "core": [
+        "音楽図像",
+        "楽器図譜",
+        "架空の楽器",
+        "機械音楽",
+        "音楽の図像学"
+      ],
+      "bridge": [
+        "楽器史",
+        "音楽史",
+        "視覚文化",
+        "装置",
+        "音響"
+      ],
+      "english_core": [
+        "musical iconography",
+        "musical diagrams",
+        "imaginary instruments",
+        "mechanical music",
+        "musical automata",
+        "instrument collections",
+        "sound archaeology"
+      ]
+    },
+    {
+      "label": "縮尺・玩具・ミニアチュール",
+      "category": "博物誌・蒐集",
+      "core": [
+        "ミニアチュール",
+        "ドールハウス",
+        "縮尺模型",
+        "ミニチュア",
+        "模型文化"
+      ],
+      "bridge": [
+        "玩具",
+        "人形",
+        "縮尺",
+        "収集",
+        "小世界",
+        "建築模型"
+      ],
+      "english_core": [
+        "dollhouse",
+        "dollhouses",
+        "miniature worlds",
+        "miniatures",
+        "scale models",
+        "architectural models",
+        "toy theatres"
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "topic": "マニエリスム・変身",
+      "term": "マニエリスム"
+    },
+    {
+      "topic": "マニエリスム・変身",
+      "term": "アルチンボルド"
+    },
+    {
+      "topic": "マニエリスム・変身",
+      "term": "ルネサンス 変身"
+    },
+    {
+      "topic": "驚異の部屋・蒐集の装置",
+      "term": "驚異の部屋"
+    },
+    {
+      "topic": "驚異の部屋・蒐集の装置",
+      "term": "ヴンダーカンマー"
+    },
+    {
+      "topic": "博物誌・珍獣・怪物",
+      "term": "ベスティアリ"
+    },
+    {
+      "topic": "博物誌・珍獣・怪物",
+      "term": "博物誌 図譜"
+    },
+    {
+      "topic": "博物誌・珍獣・怪物",
+      "term": "怪物図像"
+    },
+    {
+      "topic": "光学・錯視・幻灯",
+      "term": "アナモルフォーズ"
+    },
+    {
+      "topic": "光学・錯視・幻灯",
+      "term": "幻灯 文化史"
+    },
+    {
+      "topic": "光学・錯視・幻灯",
+      "term": "カメラ・オブスクラ"
+    },
+    {
+      "topic": "ピクチャレスク・廃墟・庭園",
+      "term": "ピクチャレスク 庭園"
+    },
+    {
+      "topic": "ピクチャレスク・廃墟・庭園",
+      "term": "ピラネージ 廃墟"
+    },
+    {
+      "topic": "ピクチャレスク・廃墟・庭園",
+      "term": "ボマルツォ"
+    },
+    {
+      "topic": "記憶術・百科・結合術",
+      "term": "記憶術 ルネサンス"
+    },
+    {
+      "topic": "記憶術・百科・結合術",
+      "term": "結合術"
+    },
+    {
+      "topic": "記憶術・百科・結合術",
+      "term": "キルヒャー"
+    },
+    {
+      "topic": "エンブレム・寓意・図像学",
+      "term": "エンブレム"
+    },
+    {
+      "topic": "エンブレム・寓意・図像学",
+      "term": "寓意画 ルネサンス"
+    },
+    {
+      "topic": "エンブレム・寓意・図像学",
+      "term": "ヒエログリフ"
+    },
+    {
+      "topic": "観相・解剖・蝋の身体",
+      "term": "観相学"
+    },
+    {
+      "topic": "観相・解剖・蝋の身体",
+      "term": "蝋解剖"
+    },
+    {
+      "topic": "観相・解剖・蝋の身体",
+      "term": "解剖模型"
+    },
+    {
+      "topic": "錬金術・魔術・秘教",
+      "term": "錬金術 図像"
+    },
+    {
+      "topic": "錬金術・魔術・秘教",
+      "term": "占術 文化史"
+    },
+    {
+      "topic": "錬金術・魔術・秘教",
+      "term": "ヘルメス主義"
+    },
+    {
+      "topic": "書物・版画・メディア考古学",
+      "term": "挿絵本 美術"
+    },
+    {
+      "topic": "書物・版画・メディア考古学",
+      "term": "木版画 中世"
+    },
+    {
+      "topic": "書物・版画・メディア考古学",
+      "term": "彩色石版画"
+    },
+    {
+      "topic": "奇想建築・迷宮・ピラネージ",
+      "term": "奇想建築"
+    },
+    {
+      "topic": "奇想建築・迷宮・ピラネージ",
+      "term": "トロンプ・ルイユ"
+    },
+    {
+      "topic": "見世物・自動機械・人造生命",
+      "term": "自動人形"
+    },
+    {
+      "topic": "見世物・自動機械・人造生命",
+      "term": "影絵劇"
+    },
+    {
+      "topic": "グロテスク・奇怪・幻想",
+      "term": "グロテスク 美術"
+    },
+    {
+      "topic": "グロテスク・奇怪・幻想",
+      "term": "心霊写真"
+    },
+    {
+      "topic": "色彩・共感覚・視覚的快楽",
+      "term": "色彩論 美術史"
+    },
+    {
+      "topic": "色彩・共感覚・視覚的快楽",
+      "term": "共感覚 美術"
+    },
+    {
+      "topic": "百科展示・視覚科学",
+      "term": "科学図譜"
+    },
+    {
+      "topic": "百科展示・視覚科学",
+      "term": "天体写真 歴史"
+    },
+    {
+      "topic": "文学の迷宮・ナンセンス",
+      "term": "ナンセンス文学"
+    },
+    {
+      "topic": "音楽図像・楽器の奇想",
+      "term": "音楽図像"
+    },
+    {
+      "topic": "縮尺・玩具・ミニアチュール",
+      "term": "ミニアチュール"
+    },
+    {
+      "topic": "縮尺・玩具・ミニアチュール",
+      "term": "ドールハウス"
+    }
+  ]
+}

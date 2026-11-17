@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "奇想和書航路",
+    "edition": "2026–2028",
+    "updated_at": null,
+    "status": "never-run",
+    "weeks_processed": 0,
+    "found_last_run": 0,
+    "total": 0,
+    "source": "国立国会図書館 JAPAN/MARC(M/S)週次ZIP",
+    "source_url": "https://www.ndl.go.jp/data/data_service/jnb_product",
+    "data_notice": "国立国会図書館書誌データを加工して作成。初期登録0冊。自動発見候補は内容確認済みの推薦ではありません。"
+  },
+  "books": []
+}

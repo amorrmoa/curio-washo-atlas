@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4eb">
+  <meta name="description" content="マニエリスム、驚異の部屋、博物誌、錬金術、図像学。高山宏的な18概念・43検索テーマから和書を自動発掘する、独立した書誌アトラス。">
+  <title>奇想和書航路 — CURIO WASHO ATLAS</title>
+  <link rel="stylesheet" href="./assets/site.css">
+  <script src="./assets/site.js" defer></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="wrap head-inner">
+      <a class="logo" href="#top" aria-label="奇想和書航路 トップへ"><span class="logo-symbol">✳</span><span><strong>奇想和書航路</strong><small>CURIO WASHO ATLAS</small></span></a>
+      <nav class="mainnav" aria-label="サイト内の移動"><a href="#discovery">新刊航路</a><a href="#atlas">概念の地図</a><a href="#method">蒐集の方法</a></nav>
+      <a class="sister-link" href="https://amorrmoa.github.io/curio-book-atlas/" target="_blank" rel="noopener noreferrer">洋書航路 <span>↗</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> AN ATLAS OF THE CURIOUS <span class="hero-year">2026—2028 / JAPANESE BOOKS</span></div>
+        <h1 id="hero-heading">まだ見ぬ奇書は、<br><em>ここから生まれる。</em></h1>
+        <p class="hero-lead">マニエリスム、驚異の部屋、博物誌、錬金術、錯視、図像学。<br>知の境界を横断する新刊和書を、毎週届く書誌の海から拾い上げる。</p>
+        <div class="hero-actions"><a class="primary-cta" href="#discovery">発掘された書物へ <span aria-hidden="true">↗</span></a><a class="text-cta" href="#atlas">18の概念をたどる <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-footnote"><span class="pulse"></span> <span>登録リストなし。すべては自動発掘から。</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="arch arch-back"></div><div class="arch arch-mid"></div><div class="arch arch-front"></div>
+        <span class="art-sun">✳</span><span class="art-planet">◐</span><span class="art-star">✦</span>
+        <div class="art-a">W</div><div class="art-vertical">WUNDER / WISSEN / WASHO</div>
+        <div class="art-bottom"><span>PLATE NO. 001</span><span>ARS MIRABILIA</span></div>
+      </div>
+    </section>
+
+    <div class="wrap rule"><span>INDEX OF THE UNEXPECTED</span><span>知の周縁から、書物をひらく。</span><span>EST. MMXXVI</span></div>
+
+    <section class="stats wrap" aria-label="登録状況">
+      <div class="stat"><strong id="stat-total">0</strong><span>発掘書籍 <small>DISCOVERED</small></span></div>
+      <div class="stat"><strong id="stat-concepts">18</strong><span>概念群 <small>CONCEPT FAMILIES</small></span></div>
+      <div class="stat"><strong>43</strong><span>検索主題 <small>SEARCH DIRECTIONS</small></span></div>
+      <div class="stat stat-date"><div class="status-dot"></div><span><strong id="last-update">初回更新前</strong><small id="update-note">週次データ更新 / WEEKLY INGESTION</small></span></div>
+    </section>
+
+    <section class="feature-band wrap" aria-label="このサイトについて">
+      <span class="band-no">01 / EDITORIAL NOTE</span>
+      <p>書物の数を競うのではなく、<strong>奇想がどこに潜むのかを探す。</strong> 本サイトの「自動発見候補」は書誌に基づく探索結果であり、実読後の推薦や内容保証を意味しません。</p>
+    </section>
+
+    <section class="catalog wrap" id="discovery" aria-labelledby="catalog-title">
+      <div class="section-heading"><div><span class="section-kicker">02 / THE DISCOVERY LOG</span><h2 id="catalog-title">発掘された<em>書物たち。</em></h2></div><p>新しい本との出会いを、<br>日付と概念から辿る。</p></div>
+      <div class="catalog-layout">
+        <aside class="filters" aria-label="書籍の絞り込み">
+          <div class="filter-title"><strong>FILTER / 索引</strong><button type="button" id="reset-filters">すべて解除 ↺</button></div>
+          <label for="q" class="filter-caption">書名・著者・出版社</label><input id="q" type="search" placeholder="キーワードを入力…" autocomplete="off">
+          <label for="concept" class="filter-caption">概念の交差点</label><select id="concept"><option value="">すべての概念</option></select>
+          <label for="year" class="filter-caption">刊行年</label><select id="year"><option value="">すべての刊行年</option></select>
+          <label for="publisher" class="filter-caption">出版社</label><select id="publisher"><option value="">すべての出版社</option></select>
+          <div class="filter-note"><span>✳</span> 未知の出版社も検索対象。<br>1回の更新で、同一出版社の新規採用は最大2冊。</div>
+        </aside>
+        <div class="results">
+          <div class="result-toolbar"><div class="result-number"><strong id="result-count">0</strong> <span>冊の書物 / RESULTS</span></div><div class="toolbar-right"><label for="sort" class="sr-only">並び順</label><select id="sort"><option value="discovered">新着順</option><option value="publication">刊行年月順</option><option value="score">概念一致度順</option><option value="title">書名順</option></select><button type="button" id="toggle-saved" aria-pressed="false">☆ 保存した本</button></div></div>
+          <div id="book-grid" class="book-grid" aria-live="polite"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <div class="empty-art" aria-hidden="true">∅<span>✺</span></div>
+            <span class="empty-eyebrow">NOTHING FOUND — YET</span>
+            <h3 id="empty-title">航路は、まだ白紙です。</h3>
+            <p id="empty-description">最初の選書リストはありません。週1回の書誌データ取込が成功し、条件に合う新刊が見つかると、ここに少しずつ本が並びます。</p>
+            <a class="empty-link" href="#method">発掘のしくみを見る ↗</a>
+          </div>
+          <div id="loadbar" class="loadbar" hidden><button type="button" id="load-more">さらに書物を表示 ↓</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="atlas-wrap" id="atlas"><div class="wrap"><div class="section-heading"><div><span class="section-kicker">03 / A CABINET OF CONCEPTS</span><h2>奇想の<em>十八景。</em></h2></div><p>洋書版と同じ18の概念を、<br>日本語の書誌の海へ。</p></div><div id="concept-grid" class="concept-grid"></div></div></section>
+
+    <section class="method wrap" id="method"><div><span class="section-kicker">04 / A NOTE ON THE METHOD</span><h2>蒐集は、<em>ここから。</em></h2><div class="method-symbol">✳</div></div><div class="method-body"><p>洋書版「奇想洋書航路」の18概念群と43検索主題を日本語に展開し、国立国会図書館が毎週公開するJAPAN/MARCの全国書誌ZIPファイルをまとめて取得します。外部検索APIは使わず、書名と件名を18概念・43テーマでローカル照合して候補を選びます。</p><p>書誌の登録状況や通信エラーによって、追加件数が0件の週もあります。また、「新刊候補」は既刊本の新版・復刊を含む可能性があります。実際の刊行日や内容は、各書籍の書誌詳細をご確認ください。</p><div class="method-links"><a href="https://www.ndl.go.jp/data/data_service/jnb_product" target="_blank" rel="noopener noreferrer">国立国会図書館 JAPAN/MARC ↗</a><a href="https://amorrmoa.github.io/curio-book-atlas/" target="_blank" rel="noopener noreferrer">姉妹サイト・奇想洋書航路 ↗</a></div><div class="method-note">出典：国立国会図書館 JAPAN/MARC(M/S)書誌データをもとに本サイト独自のテーマ分類・選別処理を行っています。国立国会図書館とは独立した非公式サイトです。書誌記録は作成・更新後に提供されるため、発売前情報の速報ではありません。</div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><div><strong>✳ 奇想和書航路</strong><small>CURIO WASHO ATLAS — A JOURNAL OF CURIOUS BOOKS</small></div><span>「驚異」は、いつも書物の中に。</span><a href="#top">PAGE TOP ↑</a></div></footer>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-inner"><button type="button" class="close-dialog" id="close-dialog" aria-label="閉じる">×</button><div id="detail-content"></div></div></dialog>
+</body>
+</html>
