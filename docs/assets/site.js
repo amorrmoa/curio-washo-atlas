@@ -3,6 +3,45 @@
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const safeUrl = text => { try { const u = new URL(text); return u.protocol === 'https:' && (u.hostname === 'ndlsearch.ndl.go.jp' || u.hostname === 'www.ndl.go.jp') ? u.href : ''; } catch { return ''; }};
+  // Official *publisher homepages*, checked independently of NDL records.
+  // An ISBN or title does not tell us a trustworthy per-book publisher URL.
+  // Unknown publishers deliberately fall back to a search rather than a guessed URL.
+  const PUBLISHER_HOMES = Object.freeze({
+    'KADOKAWA': 'https://www.kadokawa.co.jp/',
+    'SBクリエイティブ': 'https://www.sbcr.jp/',
+    'TOブックス': 'https://www.tobooks.jp/',
+    'マール社': 'https://www.maar.com/',
+    'みらいパブリッシング': 'https://miraipub.jp/',
+    'グラフィック社': 'https://www.graphicsha.co.jp/',
+    '岩波書店': 'https://www.iwanami.co.jp/',
+    '筑摩書房': 'https://www.chikumashobo.co.jp/',
+    '河出書房新社': 'https://www.kawade.co.jp/',
+    '作品社': 'https://www.sakuhinsha.com/',
+    'アルファポリス': 'https://www.alphapolis.co.jp/',
+    'スクウェア・エニックス': 'https://magazine.jp.square-enix.com/'
+  });
+  const normalPublisher = s => String(s || '').normalize('NFKC').replace(/[\s　]/g,'').replace(/^(株式会社|有限会社)/,'').replace(/(株式会社|有限会社)$/,'');
+  function publisherHome(book) {
+    return PUBLISHER_HOMES[normalPublisher(book.publisher)] || '';
+  }
+  function publisherBookUrl(book) {
+    // Optional, manually verified URL: do not make up paths from ISBNs.
+    const home = publisherHome(book);
+    if (!home || !book.publisher_book_url) return '';
+    try {
+      const u = new URL(book.publisher_book_url);
+      const h = new URL(home);
+      const domain = h.hostname.replace(/^www\./,'');
+      return u.protocol === 'https:' && (u.hostname === domain || u.hostname.endsWith('.'+domain)) ? u.href : '';
+    } catch (_) { return ''; }
+  }
+  function publisherSearchUrl(book) {
+    const home=publisherHome(book);
+    // Google search is only a *search*: never label it a verified publisher page.
+    const host=home ? new URL(home).hostname : '';
+    const query=(host ? `site:${host} ` : '') + `"${String(book.title || '').slice(0,160)}" ` + (book.isbn || book.publisher || '出版社');
+    return 'https://www.google.com/search?q=' + encodeURIComponent(query);
+  }
   const session = {books:[],taxonomy:{families:[]},q:'',concept:'',year:'',publisher:'',sort:'discovered',savedOnly:false,limit:18};
   let saved = new Set();
   try { saved = new Set(JSON.parse(localStorage.getItem('washo:saved') || '[]')); } catch (_) {}
@@ -40,11 +79,14 @@
     const pub=b.publisher || '出版社未確認';
     const year=(b.published||'').replace(/-00$/,'') || '刊行日未確認';
     const cover=(b.cover&&/^https:\/\//.test(b.cover))?`<img src="${esc(b.cover)}" alt="${esc(b.title)}の書影" loading="lazy">`:'';
+    const officialHome=publisherHome(b), verifiedBook=publisherBookUrl(b);
+    const pubHref=verifiedBook || officialHome || publisherSearchUrl(b);
+    const pubLabel=verifiedBook ? '版元の書籍ページ ↗' : officialHome ? '版元公式サイト ↗' : '版元ページを検索 ↗';
     return `<article class="book-card">
         <div class="card-cover"><span class="cover-issue">CURIO WASHO / ${esc(year)}</span><span class="cover-title">${esc(b.title)}</span><span class="cover-footer">ARS · LIBRI · MIRABILIA</span>${cover}</div>
         <div class="card-info"><div class="card-kicker"><span>自動発見候補</span><span>概念一致 ${Number(b.score)||0}</span></div>
         <h3 class="card-title">${esc(b.title)}</h3><div class="card-sub">${esc(author)}<br>${esc(pub)} · ${esc(year)}</div>
-        <div class="card-tags">${tags}</div><div class="card-actions"><button type="button" class="card-open" data-view="${i}">書誌詳細を見る ↗</button><button type="button" class="save-button" data-fave="${esc(b.id)}" data-saved="${saved.has(b.id)}" aria-label="${saved.has(b.id)?'保存を解除':'あとで見るに保存'}">${saved.has(b.id)?'★':'☆'}</button></div></div>
+        <div class="card-tags">${tags}</div><div class="card-actions"><button type="button" class="card-open" data-view="${i}">書誌詳細を見る ↗</button><button type="button" class="save-button" data-fave="${esc(b.id)}" data-saved="${saved.has(b.id)}" aria-label="${saved.has(b.id)?'保存を解除':'あとで見るに保存'}">${saved.has(b.id)?'★':'☆'}</button></div><a href="${esc(pubHref)}" target="_blank" rel="noopener noreferrer" style="margin-top:10px;font-size:11px;color:var(--dark);text-decoration:underline;text-underline-offset:3px">${pubLabel}</a></div>
       </article>`;
   }
   let rendered=[];
@@ -66,7 +108,13 @@
     const b=rendered[i];if(!b)return;
     const rows=[['著者',(b.authors||[]).join(' / ')||'未確認'],['出版社',b.publisher||'未確認'],['刊行年月',b.published||'未確認'],['ISBN',b.isbn||'未確認'],['出典',b.source||'国立国会図書館 JAPAN/MARC'],['登録日',b.discovered_at||'—'],['概念', (b.tags||[]).join(' / ')||'—'],['一致度',String(b.score||'—')]];
     const link=safeUrl(b.source_url||'');
-    $('detail-content').innerHTML=`<div class="dialog-kicker">CURIO WASHO / BIBLIOGRAPHY / 自動発見候補</div><h3 id="detail-title">${esc(b.title)}</h3><p class="dialog-desc">以下は自動照合された書誌情報です。掲載は内容の確認や推薦を意味しません。版・刊行日などは出典でご確認ください。</p><div class="dialog-meta">${rows.map(r=>`<span class="dialog-label">${esc(r[0])}</span><span>${esc(r[1])}</span>`).join('')}</div>${link?`<a class="dialog-link" href="${esc(link)}" target="_blank" rel="noopener noreferrer">国立国会図書館サーチで確認 ↗</a>`:''}`;
+    const officialHome=publisherHome(b), verifiedBook=publisherBookUrl(b);
+    const publisherActions=verifiedBook
+      ? `<a class="dialog-link" href="${esc(verifiedBook)}" target="_blank" rel="noopener noreferrer">版元の書籍ページ（確認済み） ↗</a>`
+      : officialHome
+      ? `<a class="dialog-link" href="${esc(officialHome)}" target="_blank" rel="noopener noreferrer">版元公式サイト ↗</a><a class="dialog-link" style="background:transparent;color:var(--dark);border:1px solid var(--dark)" href="${esc(publisherSearchUrl(b))}" target="_blank" rel="noopener noreferrer">この本を版元サイト内で検索 ↗</a>`
+      : `<a class="dialog-link" style="background:transparent;color:var(--dark);border:1px solid var(--dark)" href="${esc(publisherSearchUrl(b))}" target="_blank" rel="noopener noreferrer">書名と版元名で検索 ↗</a>`;
+    $('detail-content').innerHTML=`<div class="dialog-kicker">CURIO WASHO / BIBLIOGRAPHY / 自動発見候補</div><h3 id="detail-title">${esc(b.title)}</h3><p class="dialog-desc">以下は自動照合された書誌情報です。掲載は内容の確認や推薦を意味しません。版・刊行日などは出典でご確認ください。版元リンクのうち「公式サイト」は出版社トップページ、「検索」は検索結果へのリンクです。</p><div class="dialog-meta">${rows.map(r=>`<span class="dialog-label">${esc(r[0])}</span><span>${esc(r[1])}</span>`).join('')}</div><div style="display:flex;flex-wrap:wrap;gap:10px">${publisherActions}${link?`<a class="dialog-link" href="${esc(link)}" target="_blank" rel="noopener noreferrer">国立国会図書館サーチで確認 ↗</a>`:''}</div>`;
     const dlg=$('detail-dialog');if(typeof dlg.showModal==='function')dlg.showModal();else dlg.setAttribute('open','');
   }
   function clearFilters(){session.q='';session.concept='';session.year='';session.publisher='';session.savedOnly=false;session.limit=18;['q','concept','year','publisher'].forEach(id=>$(id).value='');render();}
