@@ -1,0 +1,58 @@
+name: Update weekly JAPAN/MARC catalogue and publish
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Sunday 10:17 JST / Sunday 01:17 UTC. NDL normally posts weekly data on Friday.
+    - cron: '17 1 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: curio-washo-weekly
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test parser and selection offline
+        run: python -m unittest discover -s tests -v
+      - name: Download and process unhandled weekly JAPAN/MARC files
+        run: python scripts/weekly_marc.py
+      - name: Commit changed catalog and ingestion state
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/books.json docs/data/processed_archives.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: ingest weekly JAPAN/MARC [skip ci]'
+            git push
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+  deploy:
+    needs: refresh
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
