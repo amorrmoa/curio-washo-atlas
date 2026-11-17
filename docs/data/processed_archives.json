@@ -1,4 +1,13 @@
 {
-  "processed_urls": [],
-  "last_run": null
+  "processed_urls": [
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202636.zip",
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202637.zip",
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202638.zip",
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202639.zip",
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202640.zip",
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202641.zip",
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202642.zip",
+    "https://www.ndl.go.jp/file/data/data_service/jnb_product/jmo202643.zip"
+  ],
+  "last_run": "2026-11-17T03:21:56+00:00"
 }
