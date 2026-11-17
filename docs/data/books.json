@@ -2,20 +2,22 @@
   "meta": {
     "title": "奇想和書航路",
     "edition": "2026–2028",
-    "updated_at": "2026-11-17T03:21:56+00:00",
+    "updated_at": "2026-11-17T03:56:34+00:00",
     "status": "ok",
-    "weeks_processed": 8,
-    "found_last_run": 16,
-    "total": 16,
+    "weeks_processed": 0,
+    "found_last_run": 0,
+    "total": 4,
     "source": "国立国会図書館 JAPAN/MARC(M/S) 週次ファイル",
     "source_url": "https://www.ndl.go.jp/data/data_service/jnb_product",
     "data_notice": "国立国会図書館書誌データを加工して作成。書誌に基づく自動発見候補であり、内容確認済みの推薦ではありません。",
     "archives_total": 8,
-    "queries_attempted": 8,
+    "queries_attempted": 0,
     "queries_failed": 0,
-    "scanned_records": 39304,
-    "matched_candidates": 21,
-    "deleted_known": 2
+    "scanned_records": 0,
+    "matched_candidates": 0,
+    "deleted_known": 2,
+    "excluded_total": 12,
+    "editorial_filter": "takayama-v2.0"
   },
   "books": [
     {
@@ -41,25 +43,6 @@
       "discovered_at": "2026-11-17"
     },
     {
-      "id": "ndl-034898228",
-      "ndl_id": "034898228",
-      "title": "虚無と魂の機械論 ニーアオートマタ : 存在証明と感情を解読する15の思索",
-      "authors": [],
-      "publisher": "ALLMIND LORE",
-      "published": "2026-08",
-      "isbn": "9798182419871",
-      "subjects": "コンピュータゲーム",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9798182419871",
-      "source_archive_date": "2026-10-02",
-      "score": 72,
-      "tags": [
-        "見世物・自動機械・人造生命"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
       "id": "ndl-034993003",
       "ndl_id": "034993003",
       "title": "残照の街・東京 生誕100年木版画家・山高登が写した昭和30年代",
@@ -75,199 +58,6 @@
       "score": 72,
       "tags": [
         "書物・版画・メディア考古学"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034912860",
-      "ndl_id": "034912860",
-      "title": "マール社のひつじ年木版画年賀状2027 貼ってそのまま彫れる薄紙使用の下絵集",
-      "authors": [],
-      "publisher": "マール社",
-      "published": "2026-10",
-      "isbn": "9784837312871",
-      "subjects": "",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784837312871",
-      "source_archive_date": "2026-10-02",
-      "score": 72,
-      "tags": [
-        "書物・版画・メディア考古学"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034908778",
-      "ndl_id": "034908778",
-      "title": "多肉ア・カプリッチョ 多肉植物のちょっと不思議な物語",
-      "authors": [
-        "メイ・M・メイコニー"
-      ],
-      "publisher": "みらいパブリッシング",
-      "published": "2026-09",
-      "isbn": "9784434365089",
-      "subjects": "",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784434365089",
-      "source_archive_date": "2026-11-13",
-      "score": 70,
-      "tags": [
-        "マニエリスム・変身",
-        "博物誌・珍獣・怪物"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034855668",
-      "ndl_id": "034855668",
-      "title": "心霊写真密売マニュアル = Ghost photo black market manual",
-      "authors": [
-        "池袋, 万里"
-      ],
-      "publisher": "KADOKAWA",
-      "published": "2026-08",
-      "isbn": "9784045001239",
-      "subjects": "漫画",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784045001239",
-      "source_archive_date": "2026-09-18",
-      "score": 66,
-      "tags": [
-        "グロテスク・奇怪・幻想"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034848441",
-      "ndl_id": "034848441",
-      "title": "創造錬金術師は自由を謳歌する 故郷を追放されたら、魔王のお膝元で超絶効果のマジックアイテム作り放題になりました",
-      "authors": [
-        "千月, さかき",
-        "姫乃, タカ"
-      ],
-      "publisher": "KADOKAWA",
-      "published": "2026-08",
-      "isbn": "9784041175736",
-      "subjects": "漫画",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784041175736",
-      "source_archive_date": "2026-09-18",
-      "score": 62,
-      "tags": [
-        "錬金術・魔術・秘教"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034906335",
-      "ndl_id": "034906335",
-      "title": "錬金術師のゆるふわ離島開拓記 コミック",
-      "authors": [
-        "大多喜, たぬた",
-        "森田, 季節"
-      ],
-      "publisher": "SBクリエイティブ",
-      "published": "2026-09",
-      "isbn": "9784815631741",
-      "subjects": "漫画",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784815631741",
-      "source_archive_date": "2026-10-02",
-      "score": 62,
-      "tags": [
-        "錬金術・魔術・秘教"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034952044",
-      "ndl_id": "034952044",
-      "title": "不遇皇子は天才錬金術師 皇帝なんて柄じゃないので弟妹を可愛がりたい",
-      "authors": [
-        "うめー"
-      ],
-      "publisher": "TOブックス",
-      "published": "2026-11",
-      "isbn": "9784868541493",
-      "subjects": "",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784868541493",
-      "source_archive_date": "2026-10-16",
-      "score": 62,
-      "tags": [
-        "錬金術・魔術・秘教"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034952041",
-      "ndl_id": "034952041",
-      "title": "不遇皇子は天才錬金術師～皇帝なんて柄じゃないので弟妹を可愛がりたい～@COMIC",
-      "authors": [
-        "長先, ザワ",
-        "うめー",
-        "雨銛"
-      ],
-      "publisher": "TOブックス",
-      "published": "2026-11",
-      "isbn": "9784868541424",
-      "subjects": "漫画",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784868541424",
-      "source_archive_date": "2026-10-16",
-      "score": 62,
-      "tags": [
-        "錬金術・魔術・秘教"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034899820",
-      "ndl_id": "034899820",
-      "title": "いずれ最強の錬金術師? = SOMEDAY WILL I BE THE GREATEST ALCHEMIST?",
-      "authors": [
-        "小狐丸"
-      ],
-      "publisher": "アルファポリス",
-      "published": "2026-09",
-      "isbn": "9784434384370",
-      "subjects": "",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784434384370",
-      "source_archive_date": "2026-10-02",
-      "score": 62,
-      "tags": [
-        "錬金術・魔術・秘教"
-      ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034970050",
-      "ndl_id": "034970050",
-      "title": "不遇スキルの錬金術師、辺境を開拓する",
-      "authors": [
-        "つちねこ",
-        "がいかん"
-      ],
-      "publisher": "アルファポリス",
-      "published": "2026-10",
-      "isbn": "9784434386343",
-      "subjects": "漫画",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784434386343",
-      "source_archive_date": "2026-11-13",
-      "score": 62,
-      "tags": [
-        "錬金術・魔術・秘教"
       ],
       "discovered_at": "2026-11-17"
     },
@@ -297,6 +87,251 @@
       "discovered_at": "2026-11-17"
     },
     {
+      "id": "ndl-034802383",
+      "ndl_id": "034802383",
+      "title": "中国のグロテスク・リアリズム 明代白話小説「三言」を読む",
+      "authors": [
+        "井波, 律子"
+      ],
+      "publisher": "岩波書店",
+      "published": "2026-07",
+      "isbn": "9784006023850",
+      "subjects": "中国小説 / 歴史",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784006023850",
+      "source_archive_date": "2026-10-02",
+      "score": 62,
+      "tags": [
+        "グロテスク・奇怪・幻想"
+      ],
+      "discovered_at": "2026-11-17"
+    }
+  ],
+  "excluded_books": [
+    {
+      "id": "ndl-034898228",
+      "ndl_id": "034898228",
+      "title": "虚無と魂の機械論 ニーアオートマタ : 存在証明と感情を解読する15の思索",
+      "authors": [],
+      "publisher": "ALLMIND LORE",
+      "published": "2026-08",
+      "isbn": "9798182419871",
+      "subjects": "コンピュータゲーム",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9798182419871",
+      "source_archive_date": "2026-10-02",
+      "score": 72,
+      "tags": [
+        "見世物・自動機械・人造生命"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "game_subject"
+    },
+    {
+      "id": "ndl-034912860",
+      "ndl_id": "034912860",
+      "title": "マール社のひつじ年木版画年賀状2027 貼ってそのまま彫れる薄紙使用の下絵集",
+      "authors": [],
+      "publisher": "マール社",
+      "published": "2026-10",
+      "isbn": "9784837312871",
+      "subjects": "",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784837312871",
+      "source_archive_date": "2026-10-02",
+      "score": 72,
+      "tags": [
+        "書物・版画・メディア考古学"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "hobby_activity"
+    },
+    {
+      "id": "ndl-034908778",
+      "ndl_id": "034908778",
+      "title": "多肉ア・カプリッチョ 多肉植物のちょっと不思議な物語",
+      "authors": [
+        "メイ・M・メイコニー"
+      ],
+      "publisher": "みらいパブリッシング",
+      "published": "2026-09",
+      "isbn": "9784434365089",
+      "subjects": "",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784434365089",
+      "source_archive_date": "2026-11-13",
+      "score": 70,
+      "tags": [
+        "マニエリスム・変身",
+        "博物誌・珍獣・怪物"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "insufficient_scholarly_context"
+    },
+    {
+      "id": "ndl-034855668",
+      "ndl_id": "034855668",
+      "title": "心霊写真密売マニュアル = Ghost photo black market manual",
+      "authors": [
+        "池袋, 万里"
+      ],
+      "publisher": "KADOKAWA",
+      "published": "2026-08",
+      "isbn": "9784045001239",
+      "subjects": "漫画",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784045001239",
+      "source_archive_date": "2026-09-18",
+      "score": 66,
+      "tags": [
+        "グロテスク・奇怪・幻想"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "comic_subject"
+    },
+    {
+      "id": "ndl-034848441",
+      "ndl_id": "034848441",
+      "title": "創造錬金術師は自由を謳歌する 故郷を追放されたら、魔王のお膝元で超絶効果のマジックアイテム作り放題になりました",
+      "authors": [
+        "千月, さかき",
+        "姫乃, タカ"
+      ],
+      "publisher": "KADOKAWA",
+      "published": "2026-08",
+      "isbn": "9784041175736",
+      "subjects": "漫画",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784041175736",
+      "source_archive_date": "2026-09-18",
+      "score": 62,
+      "tags": [
+        "錬金術・魔術・秘教"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "comic_subject"
+    },
+    {
+      "id": "ndl-034906335",
+      "ndl_id": "034906335",
+      "title": "錬金術師のゆるふわ離島開拓記 コミック",
+      "authors": [
+        "大多喜, たぬた",
+        "森田, 季節"
+      ],
+      "publisher": "SBクリエイティブ",
+      "published": "2026-09",
+      "isbn": "9784815631741",
+      "subjects": "漫画",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784815631741",
+      "source_archive_date": "2026-10-02",
+      "score": 62,
+      "tags": [
+        "錬金術・魔術・秘教"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "comic_subject"
+    },
+    {
+      "id": "ndl-034952044",
+      "ndl_id": "034952044",
+      "title": "不遇皇子は天才錬金術師 皇帝なんて柄じゃないので弟妹を可愛がりたい",
+      "authors": [
+        "うめー"
+      ],
+      "publisher": "TOブックス",
+      "published": "2026-11",
+      "isbn": "9784868541493",
+      "subjects": "",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784868541493",
+      "source_archive_date": "2026-10-16",
+      "score": 62,
+      "tags": [
+        "錬金術・魔術・秘教"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "fiction_plot"
+    },
+    {
+      "id": "ndl-034952041",
+      "ndl_id": "034952041",
+      "title": "不遇皇子は天才錬金術師～皇帝なんて柄じゃないので弟妹を可愛がりたい～@COMIC",
+      "authors": [
+        "長先, ザワ",
+        "うめー",
+        "雨銛"
+      ],
+      "publisher": "TOブックス",
+      "published": "2026-11",
+      "isbn": "9784868541424",
+      "subjects": "漫画",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784868541424",
+      "source_archive_date": "2026-10-16",
+      "score": 62,
+      "tags": [
+        "錬金術・魔術・秘教"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "comic_title"
+    },
+    {
+      "id": "ndl-034899820",
+      "ndl_id": "034899820",
+      "title": "いずれ最強の錬金術師? = SOMEDAY WILL I BE THE GREATEST ALCHEMIST?",
+      "authors": [
+        "小狐丸"
+      ],
+      "publisher": "アルファポリス",
+      "published": "2026-09",
+      "isbn": "9784434384370",
+      "subjects": "",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784434384370",
+      "source_archive_date": "2026-10-02",
+      "score": 62,
+      "tags": [
+        "錬金術・魔術・秘教"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "fiction_plot"
+    },
+    {
+      "id": "ndl-034970050",
+      "ndl_id": "034970050",
+      "title": "不遇スキルの錬金術師、辺境を開拓する",
+      "authors": [
+        "つちねこ",
+        "がいかん"
+      ],
+      "publisher": "アルファポリス",
+      "published": "2026-10",
+      "isbn": "9784434386343",
+      "subjects": "漫画",
+      "description": "",
+      "source": "国立国会図書館 JAPAN/MARC(M/S)",
+      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784434386343",
+      "source_archive_date": "2026-11-13",
+      "score": 62,
+      "tags": [
+        "錬金術・魔術・秘教"
+      ],
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "comic_subject"
+    },
+    {
       "id": "ndl-034958797",
       "ndl_id": "034958797",
       "title": "暗殺スキルで異世界最強 錬金術と暗殺術を極めた俺は、世界を陰から支配する",
@@ -316,7 +351,8 @@
       "tags": [
         "錬金術・魔術・秘教"
       ],
-      "discovered_at": "2026-11-17"
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "comic_subject"
     },
     {
       "id": "ndl-034892982",
@@ -337,28 +373,8 @@
       "tags": [
         "錬金術・魔術・秘教"
       ],
-      "discovered_at": "2026-11-17"
-    },
-    {
-      "id": "ndl-034802383",
-      "ndl_id": "034802383",
-      "title": "中国のグロテスク・リアリズム 明代白話小説「三言」を読む",
-      "authors": [
-        "井波, 律子"
-      ],
-      "publisher": "岩波書店",
-      "published": "2026-07",
-      "isbn": "9784006023850",
-      "subjects": "中国小説 / 歴史",
-      "description": "",
-      "source": "国立国会図書館 JAPAN/MARC(M/S)",
-      "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=9784006023850",
-      "source_archive_date": "2026-10-02",
-      "score": 62,
-      "tags": [
-        "グロテスク・奇怪・幻想"
-      ],
-      "discovered_at": "2026-11-17"
+      "discovered_at": "2026-11-17",
+      "excluded_reason": "fiction_plot"
     }
   ]
 }
