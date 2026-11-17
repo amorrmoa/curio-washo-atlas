@@ -44,6 +44,131 @@ TITLE_STRONG_CUES = (
 SCHOLARLY_CUES = ("美術", "図像", "視覚", "歴史", "研究", "文化", "芸術", "図譜", "博物", "ルネサンス", "光学", "建築", "装飾", "思想", "版画", "絵画", "図説", "考古", "文献", "医学", "写真", "図説", "蒐集", "博物館", "百科", "庭園")
 AMBIGUOUS_TITLE_TERMS = ("変身", "変容", "幻想", "色彩", "迷宮", "玩具", "音楽", "模型", "標本", "魔術")
 
+# v2.0: Research-oriented editorial filter. This is NOT a semantic classifier:
+# ambiguous records are handled conservatively, using bibliographic evidence.
+ACADEMIC_TITLE_MARKERS = (
+    "美術史", "図像学", "図像史", "文化史", "思想史", "芸術史", "書物史", "出版史",
+    "視覚文化", "光学史", "研究", "論考", "論集", "考証", "史料", "資料集",
+    "歴史", "理論", "図録", "展覧会", "作品集", "画集", "図譜", "図説",
+    "写真史", "版画家", "博物誌", "論理学", "図像", "考古学", "記憶術",
+    "書誌学", "蒐集史", "解剖学", "ルネサンス", "バロック", "明代", "清代",
+)
+ACADEMIC_SUBJECT_MARKERS = (
+    "美術", "図像", "視覚文化", "美術史", "絵画", "版画", "博物誌", "記憶術",
+    "文献", "論理学", "思想史", "芸術", "建築史", "宗教史", "出版史", "文化史",
+    "歴史", "書誌", "博物館", "博物学", "科学史", "文学史", "医学史", "写真史",
+    "考古学", "風俗史", "色彩論", "修辞学", "図書館", "歴史学",
+)
+# Broad terms or names in creative works are not, by themselves, evidence of scholarship.
+HIGH_SPECIFICITY_CUES = (
+    "マニエリスム", "アルチンボルド", "アナモルフォーズ", "驚異の部屋",
+    "ヴンダーカンマー", "クンストカンマー", "エンブレム", "キルヒャー",
+    "ベスティアリ", "博物誌", "記憶術", "図像学", "観相学", "蝋解剖",
+    "ピラネージ", "ヒエログリフ", "幻灯史", "自然史", "科学図像", "寓意画",
+    "カメラ・オブスクラ", "トロンプ・ルイユ", "グロテスク美術",
+)
+# Fiction/entertainment plot formulas; apply only unless the title is clearly critical scholarship.
+STORY_TITLE_MARKERS = (
+    "異世界", "転生", "追放", "魔王", "勇者", "スキル", "最強", "無双",
+    "皇子", "令嬢", "ダンジョン", "チート", "スローライフ", "溺愛", "冒険者",
+    "辺境を開拓", "俺は", "私が", "ゆるふわ", "暗殺術", "錬金術師カレン",
+    "錬金術師は", "錬金術師、", "錬金術師?", "錬金術師？", "錬金術師の",
+)
+LIGHT_NOVEL_SERIES = (
+    "電撃文庫", "角川スニーカー文庫", "mf文庫j", "ga文庫", "ファンタジア文庫",
+    "オーバーラップ文庫", "アルファポリスきずな文庫", "hj文庫", "ファミ通文庫",
+    "ガガガ文庫", "モンスター文庫", "アース・スターノベル", "カドカワbooks",
+)
+HOBBY_FORMAT_MARKERS = (
+    "年賀状", "ぬりえ", "塗り絵", "下絵集", "素材集", "手帳", "カレンダー",
+    "練習帳", "ドリル", "シールブック", "ワークブック", "まちがいさがし",
+    "攻略本", "パズルブック", "切り絵キット",
+)
+
+
+def selection_reason(item: dict, taxonomy: dict) -> str:
+    """Return empty string for eligible books; otherwise a precise rejection reason.
+
+    Do not reject research ABOUT literature/comics, but reject records of comics
+    and entertainment fiction themselves. Publishers are not used as blacklists.
+    """
+    title = norm(item.get("title", ""))
+    subject = norm(item.get("subjects", ""))
+    genres = norm(item.get("genres", ""))
+    series = norm(item.get("series", ""))
+    if not title:
+        return "missing_title"
+
+    academic_title = any(norm(x) in title for x in ACADEMIC_TITLE_MARKERS)
+    academic_subject = any(norm(x) in subject for x in ACADEMIC_SUBJECT_MARKERS)
+    academic = academic_title or academic_subject
+
+    # If a tag identifies the FORMAT as manga or fiction, not merely its subject,
+    # it is not a bibliographic study; a scholarly book about manga is still allowed.
+    if any(x in genres for x in ("漫画", "コミック", "ライトノベル", "小説", "フィクション")):
+        return "fiction_or_comic_format"
+    if any(x in series for x in (norm(y) for y in LIGHT_NOVEL_SERIES)):
+        return "light_novel_series"
+    if re.search(r"(?:@comic|(?:^|[^a-z])comic(?:$|[^a-z])|コミックス|コミック版|マンガでわかる|漫画版)", title, re.I):
+        if not academic:
+            return "comic_title"
+    if ("漫画" in subject or "コミック" in subject) and not academic_title:
+        return "comic_subject"
+    if "コンピュータゲーム" in subject and not academic_title:
+        return "game_subject"
+    if any(norm(x) in title for x in HOBBY_FORMAT_MARKERS) and not academic:
+        return "hobby_activity"
+    if any(norm(x) in title for x in STORY_TITLE_MARKERS) and not academic:
+        return "fiction_plot"
+    if re.search(r"\b(?:vol|volume)\.?\s*\d+\b", title, re.I) and not academic:
+        return "serial_fiction"
+
+    # For a bare keyword like '錬金術師' in a novel title, discount the keyword.
+    stripped = title.replace("錬金術師", "").replace("ニーアオートマタ", "")
+    core_title = set()
+    core_subject = set()
+    for family in taxonomy.get("families", []):
+        for term in family.get("core", []) + family.get("english_core", []):
+            token = norm(term)
+            if token and token in stripped:
+                core_title.add((family["label"], token))
+            if token and token in subject:
+                core_subject.add((family["label"], token))
+    if not core_title and not core_subject:
+        return "no_distinctive_topic"
+
+    # Specific art-historical terminology remains eligible even with sparse NDL subjects.
+    strong = any(norm(x) in stripped for x in HIGH_SPECIFICITY_CUES)
+    if not strong and not academic:
+        return "insufficient_scholarly_context"
+    # Most other books must mention a topic in their title, not merely a vague subject.
+    if not core_title and not (academic_title and core_subject):
+        return "topic_not_in_title"
+    return ""
+
+
+def split_existing_catalog(books: list[dict], taxonomy: dict) -> tuple[list[dict], list[dict]]:
+    """Move only automatically discovered, clearly out-of-scope books to archive.
+
+    No manual entry is removed. Archived records remain inside books.json under
+    excluded_books, making the editorial decision reversible without Git rewrites.
+    """
+    keep, hidden = [], []
+    for item in books:
+        if (not item.get("ndl_id") or
+                item.get("source") != "国立国会図書館 JAPAN/MARC(M/S)" or
+                item.get("manual_override") is True or
+                item.get("editorial_status") in {"approved", "verified"}):
+            keep.append(item)
+            continue
+        reason = selection_reason(item, taxonomy)
+        if reason:
+            hidden.append({**item, "excluded_reason": reason})
+        else:
+            keep.append(item)
+    return keep, hidden
+
+
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -288,6 +413,8 @@ def record_to_book(record: dict, archive_date: str = "") -> dict | None:
     for tag in ("650", "651", "653", "655"):
         for code in ("a", "x", "v"):
             subjects += field_values(record, tag, code)
+    genres = " / ".join(dict.fromkeys(field_values(record, "655", "a")))[:200]
+    series = " / ".join(dict.fromkeys(field_values(record, "490", "a") + field_values(record, "830", "a")))[:300]
     isbn = re.sub(r"[^0-9Xx]", "", first_field(record, ["020"]))
     if len(isbn) not in {10, 13}:
         isbn = ""
@@ -295,6 +422,7 @@ def record_to_book(record: dict, archive_date: str = "") -> dict | None:
         "id": f"ndl-{ndl_id}", "ndl_id": ndl_id, "title": title,
         "authors": authors, "publisher": publisher, "published": get_publication(record),
         "isbn": isbn, "subjects": " / ".join(dict.fromkeys(subjects))[:700],
+        "genres": genres, "series": series,
         "description": "", "source": "国立国会図書館 JAPAN/MARC(M/S)",
         "source_url": "https://ndlsearch.ndl.go.jp/search?keyword=" + quote(isbn or title),
         "source_archive_date": archive_date,
@@ -384,7 +512,7 @@ def apply_updates(books: list[dict], records_by_archive: list[tuple[str, list[di
                 additions.pop(ndl_id, None)
                 continue
             score, tags = score_book(item, taxonomy)
-            if score < MIN_SCORE:
+            if score < MIN_SCORE or selection_reason(item, taxonomy):
                 additions.pop(ndl_id, None)
                 continue
             item.update(score=score, tags=tags)
@@ -429,6 +557,12 @@ def run(initial_weeks: int, dry_run: bool = False, zip_paths: list[str] | None =
         raise RuntimeError("Taxonomy configuration is missing or incomplete")
     initial = {"meta": {"title": "奇想和書航路", "updated_at": None}, "books": []}
     saved = load_json(BOOKS_FILE, initial)
+    # Re-audit past auto-discoveries. Move false positives to an archive inside
+    # books.json rather than deleting them; manually entered records are kept.
+    active_books, freshly_excluded = split_existing_catalog(saved.get("books", []), taxonomy)
+    excluded_by_id = {b.get("ndl_id", b.get("id")): b for b in saved.get("excluded_books", [])}
+    for book in freshly_excluded:
+        excluded_by_id[book.get("ndl_id", book.get("id"))] = book
     state = load_json(STATE_FILE, {"processed_urls": [], "last_run": None})
     processed = set(state.get("processed_urls", []))
     if zip_paths:
@@ -463,13 +597,28 @@ def run(initial_weeks: int, dry_run: bool = False, zip_paths: list[str] | None =
             time.sleep(1.5)
     # No new archives is a normal idempotent weekly no-op.
     if not discovered:
-        print("No new JAPAN/MARC weekly archives. Existing catalog preserved.")
+        if freshly_excluded and not dry_run:
+            saved["books"] = active_books
+            saved["excluded_books"] = list(excluded_by_id.values())
+            meta = dict(saved.get("meta", {}))
+            meta.update(total=len(active_books), excluded_total=len(excluded_by_id),
+                        updated_at=now_iso(), editorial_filter="takayama-v2.0",
+                        found_last_run=0, weeks_processed=0, queries_attempted=0,
+                        queries_failed=0, scanned_records=0, matched_candidates=0)
+            saved["meta"] = meta
+            atomic_json(BOOKS_FILE, saved)
+            print(f"No new weekly archives. Reclassified {len(freshly_excluded)} existing titles (recoverable).")
+        else:
+            print(f"No new JAPAN/MARC weekly archives. Editorial reclassification: {len(freshly_excluded)} titles (dry run={dry_run}).")
         return 0
     # No successful downloads -> prevent replacing good data or recording false success.
     if not batch:
         print("No archive processed; existing published data preserved.", file=sys.stderr)
         return 1
-    books, stats = apply_updates(saved.get("books", []), batch, taxonomy)
+    books, stats = apply_updates(active_books, batch, taxonomy)
+    books, after_run_excluded = split_existing_catalog(books, taxonomy)
+    for book in after_run_excluded:
+        excluded_by_id[book.get("ndl_id", book.get("id"))] = book
     meta = dict(saved.get("meta", {}))
     meta.update({
         "title": "奇想和書航路", "edition": "2026–2028", "updated_at": now_iso(),
@@ -477,13 +626,15 @@ def run(initial_weeks: int, dry_run: bool = False, zip_paths: list[str] | None =
         "source_url": INDEX_URL, "total": len(books), "weeks_processed": len(batch),
         "archives_total": len(processed | set(newly_processed)), "queries_attempted": len(discovered),
         "queries_failed": len(failures), "data_notice": "国立国会図書館書誌データを加工して作成。書誌に基づく自動発見候補であり、内容確認済みの推薦ではありません。",
+        "editorial_filter": "takayama-v2.0", "excluded_total": len(excluded_by_id),
+        "excluded_this_run": len(freshly_excluded) + len(after_run_excluded),
         **stats,
     })
     if dry_run:
         print(f"DRY RUN: {stats}; current total={len(books)}, archives={len(newly_processed)}, failures={len(failures)}")
         return 0 if not failures else 2
     # Save both only after parsing: data is a cumulative archive; re-run is idempotent.
-    atomic_json(BOOKS_FILE, {"meta": meta, "books": books})
+    atomic_json(BOOKS_FILE, {"meta": meta, "books": books, "excluded_books": list(excluded_by_id.values())})
     atomic_json(STATE_FILE, {"processed_urls": sorted(processed | set(newly_processed)), "last_run": meta["updated_at"]})
     print(f"Result: +{stats['found_last_run']} titles, {len(books)} total, {len(batch)} archives processed")
     return 0 if not failures else 2
