@@ -2,22 +2,23 @@
   "meta": {
     "title": "奇想和書航路",
     "edition": "2026–2028",
-    "updated_at": "2026-11-17T03:56:34+00:00",
+    "updated_at": "2026-11-22T02:20:13+00:00",
     "status": "ok",
-    "weeks_processed": 0,
+    "weeks_processed": 1,
     "found_last_run": 0,
     "total": 4,
     "source": "国立国会図書館 JAPAN/MARC(M/S) 週次ファイル",
     "source_url": "https://www.ndl.go.jp/data/data_service/jnb_product",
     "data_notice": "国立国会図書館書誌データを加工して作成。書誌に基づく自動発見候補であり、内容確認済みの推薦ではありません。",
-    "archives_total": 8,
-    "queries_attempted": 0,
+    "archives_total": 9,
+    "queries_attempted": 1,
     "queries_failed": 0,
-    "scanned_records": 0,
+    "scanned_records": 3865,
     "matched_candidates": 0,
-    "deleted_known": 2,
+    "deleted_known": 0,
     "excluded_total": 12,
-    "editorial_filter": "takayama-v2.0"
+    "editorial_filter": "takayama-v2.0",
+    "excluded_this_run": 0
   },
   "books": [
     {
